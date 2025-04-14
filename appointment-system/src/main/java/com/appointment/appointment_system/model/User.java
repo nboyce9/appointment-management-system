@@ -1,9 +1,13 @@
 package com.appointment.appointment_system.model;
 
-import org.springframework.stereotype.Component;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-@Component
+@Entity
+@Table(name="usersdb")
 public class User {
+    @Id
     private Long id;
     private String name;
     private String surname;
