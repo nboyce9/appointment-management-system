@@ -1,5 +1,8 @@
 package com.appointment.appointment_system.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class User {
     private Long id;
     private String name;
