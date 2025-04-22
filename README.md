@@ -34,9 +34,4 @@ A full-stack web application for managing appointments between service providers
 
 # Frontend
 
-      React 
-      Material-UI
-      React Router
-      Axios
-      FullCalendar
-      JWT Authentication
+      React
