@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
@@ -17,13 +18,24 @@ public class LoadDataBase {
     @Bean
     CommandLineRunner loadData(UserRepository repo) {
         return args -> {
-            repo.save(new User(1L, "Lilo", "Cartoon", "liloc@email.com", "0712345678",
-                    UserRole.CLIENT, List.of(new Appointment("Office", AppointmentStatus.WAITING,LocalDate.now()))));
-            repo.save(new User(2L, "Stitch", "Cartoon", "stitchc@email.com", "0798765432",
-                    UserRole.CLIENT, List.of(new Appointment("Office", AppointmentStatus.CANCELLED,LocalDate.now()))));
-            repo.save(new User(3L, "Papa", "Cartoon", "papac@email.com", "0716581695",
-                    UserRole.ADMIN,
-                    List.of(new Appointment())));
+        User lilo =new User(1L, "Lilo", "Cartoon", "liloc@email.com", "0712345678",
+                UserRole.CLIENT, new ArrayList<>());
+        User stitch= new User(2L, "Stitch", "Cartoon", "stitchc@email.com", "0798765432",
+                UserRole.CLIENT, new ArrayList<>());
+        User papa = new User(3L, "Papa", "Cartoon", "papac@email.com", "0716581695",
+                UserRole.ADMIN,
+                new ArrayList<>());
+        //Appointment appointment = new Appointment("Office", AppointmentStatus.WAITING,LocalDate.now(), lilo);
+//        lilo.addAppointment(new Appointment("Office", AppointmentStatus.WAITING,LocalDate.now()));
+            Appointment app1 = new Appointment();
+            app1.setDate(LocalDate.of(2025, 04, 30));
+            app1.setLocation("Office");
+            app1.setStatus(AppointmentStatus.WAITING);
+            lilo.addAppointment(app1);
+            repo.saveAll(List.of(lilo,stitch, papa));
         };
+
+//        "Office", AppointmentStatus.WAITING,LocalDate.now()
+//        "Office", AppointmentStatus.CANCELLED,LocalDate.now()
     }
 }
