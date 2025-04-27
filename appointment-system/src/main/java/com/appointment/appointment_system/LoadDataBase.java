@@ -25,8 +25,7 @@ public class LoadDataBase {
         User papa = new User(3L, "Papa", "Cartoon", "papac@email.com", "0716581695",
                 UserRole.ADMIN,
                 new ArrayList<>());
-        //Appointment appointment = new Appointment("Office", AppointmentStatus.WAITING,LocalDate.now(), lilo);
-//        lilo.addAppointment(new Appointment("Office", AppointmentStatus.WAITING,LocalDate.now()));
+
             Appointment app1 = new Appointment();
             app1.setDate(LocalDate.of(2025, 04, 30));
             app1.setLocation("Office");
@@ -34,8 +33,5 @@ public class LoadDataBase {
             lilo.addAppointment(app1);
             repo.saveAll(List.of(lilo,stitch, papa));
         };
-
-//        "Office", AppointmentStatus.WAITING,LocalDate.now()
-//        "Office", AppointmentStatus.CANCELLED,LocalDate.now()
     }
 }
