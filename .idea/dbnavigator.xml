@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
@@ -25,7 +25,7 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="edad17c9-a97e-42f3-89b1-f808e910baee">
       <console name="Connection" type="STANDARD" schema="pg_catalog" session="Main" />
-      <console name="Connection 1" type="STANDARD" schema="usersdb" session="Main"><![CDATA[INSERT INTO usersdb (id, name, surname, emailAddress, phoneNumber, password, role) VALUES (1, 'Lilo', 'Cartoon', 'liloc@email.com', '0712345678', '********', USER);]]></console>
+      <console name="Connection 1" type="STANDARD" schema="usersdb" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -73,7 +73,7 @@
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER_PASSWORD" />
-          <user value="postgres" />
+          <user value="nboyce" />
           <token-type value="" />
           <token-config-file value="" />
           <token-profile value="" />
