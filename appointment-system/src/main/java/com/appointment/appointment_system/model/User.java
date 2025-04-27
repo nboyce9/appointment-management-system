@@ -1,11 +1,11 @@
 package com.appointment.appointment_system.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,15 +15,24 @@ import java.util.List;
 @Table(name="usersdb")
 public class User {
     @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String surname;
     private String emailAddress;
     private String phoneNumber;
     private UserRole role;
-    private List<Appointment> appointments;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Appointment> appointments = new ArrayList<>();
 
     public User() {}
+
+    public void addAppointment(Appointment appointment){
+        appointments.add(appointment);
+        appointment.setUser(this);
+
+    }
 
     @Override
     public String toString() {
