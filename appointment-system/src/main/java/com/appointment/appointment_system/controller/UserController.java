@@ -32,4 +32,14 @@ public class UserController {
     public void deleteUser(@PathVariable int user_id){
         svc.deleteUser(user_id);
     }
+
+    @RequestMapping("{user_id}/user")
+    public User getUser(@PathVariable int user_id){
+        return svc.getUser(user_id);
+    }
+
+    @RequestMapping("{user_id}/appointments")
+    public List<Appointment> getUserAppointments(@PathVariable int user_id){
+        return svc.getUserAppointments(user_id);
+    }
 }

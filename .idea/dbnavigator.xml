@@ -24,7 +24,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="edad17c9-a97e-42f3-89b1-f808e910baee">
-      <console name="Connection" type="STANDARD" schema="pg_catalog" session="Main" />
+      <console name="Connection" type="STANDARD" schema="public" session="Main" />
       <console name="Connection 1" type="STANDARD" schema="usersdb" session="Main" />
     </connection>
   </component>
@@ -32,7 +32,9 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="edad17c9-a97e-42f3-89b1-f808e910baee" object-ref="consoles/Connection 1" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="edad17c9-a97e-42f3-89b1-f808e910baee" />

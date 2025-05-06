@@ -49,4 +49,14 @@ public class UserService {
     public void deleteUser(int id) {
         repo.deleteById(id);
     }
+
+    public User getUser(int userId) {
+        return repo.findById(userId).get();
+    }
+
+    public List<Appointment> getUserAppointments(int userId) {
+        Optional<User> user = repo.findById(userId);
+        return user.get().getAppointments();
+    }
+
 }
