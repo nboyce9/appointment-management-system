@@ -35,6 +35,29 @@ public class Appointment {
         this.user = user;
     }
 
+    public boolean validTimeSlot(){
+        if(date.isAfter(LocalDateTime.now())){
+            if(date.getHour() < 17 && date.getHour() >= 8){
+                return true;
+            }
+            else {
+                throw new IllegalArgumentException("Outside business hours.");
+            }
+        }
+        else{
+            throw new IllegalArgumentException("Can't book past dates.");
+        }
+    }
+
+    public boolean validDay(){
+        if(date.getDayOfWeek().getValue() <= 5){
+            return true;
+        }
+        else{
+            throw new IllegalArgumentException("Outside working days.");
+        }
+    }
+
     public String getLocation() {
         return location;
     }

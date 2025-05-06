@@ -29,9 +29,10 @@ public class User {
     public User() {}
 
     public void addAppointment(Appointment appointment){
-        appointments.add(appointment);
-        appointment.setUser(this);
-
+        if (appointment.validDay() && appointment.validTimeSlot()) {
+            appointments.add(appointment);
+            appointment.setUser(this);
+        }
     }
 
     @Override
