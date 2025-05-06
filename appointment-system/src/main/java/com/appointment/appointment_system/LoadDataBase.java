@@ -28,7 +28,7 @@ public class LoadDataBase {
                 new ArrayList<>());
 
             Appointment app1 = new Appointment();
-            app1.setDate(LocalDateTime.of(2025, 4, 30, 9, 45));
+            app1.setDate(LocalDateTime.of(2025, 9, 30, 9, 45));
             app1.setLocation("Office");
             app1.setStatus(AppointmentStatus.WAITING);
             lilo.addAppointment(app1);
