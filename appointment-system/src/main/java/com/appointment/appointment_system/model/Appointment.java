@@ -3,7 +3,7 @@ package com.appointment.appointment_system.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Appointment {
@@ -12,7 +12,7 @@ public class Appointment {
     private Integer id;
     private String location;
     private AppointmentStatus status;
-    private LocalDate date;
+    private LocalDateTime date;
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference
@@ -20,7 +20,7 @@ public class Appointment {
 
     public Appointment(){}
 
-    public Appointment(Integer id, String location, LocalDate date, AppointmentStatus status, User user) {
+    public Appointment(Integer id, String location, LocalDateTime date, AppointmentStatus status, User user) {
         this.id = id;
         this.location = location;
         this.date = date;
@@ -28,7 +28,7 @@ public class Appointment {
         this.user = user;
     }
 
-    public Appointment(String location, AppointmentStatus status, LocalDate date, User user) {
+    public Appointment(String location, AppointmentStatus status, LocalDateTime date, User user) {
         this.location = location;
         this.status = status;
         this.date = date;
@@ -51,11 +51,11 @@ public class Appointment {
         this.status = status;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
