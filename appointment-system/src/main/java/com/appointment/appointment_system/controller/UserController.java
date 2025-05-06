@@ -27,4 +27,9 @@ public class UserController {
     public void addAppointment(@PathVariable int userId, @RequestBody Appointment appointment){
         svc.addAppointment(userId, appointment);
     }
+
+    @DeleteMapping("/{user_id}/delete")
+    public void deleteUser(@PathVariable int user_id){
+        svc.deleteUser(user_id);
+    }
 }

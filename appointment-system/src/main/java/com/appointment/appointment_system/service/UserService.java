@@ -45,4 +45,8 @@ public class UserService {
         User user = userOptional.get();
         repo.save(user);
     }
+
+    public void deleteUser(int id) {
+        repo.deleteById(id);
+    }
 }
