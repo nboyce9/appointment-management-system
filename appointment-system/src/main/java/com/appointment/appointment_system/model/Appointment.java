@@ -3,6 +3,7 @@ package com.appointment.appointment_system.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -35,21 +36,16 @@ public class Appointment {
         this.user = user;
     }
 
-    public boolean validTimeSlot(){
-        if(date.isAfter(LocalDateTime.now())){
-            if(date.getHour() < 17 && date.getHour() >= 8){
-                return true;
-            }
-            else {
-                throw new IllegalArgumentException("Outside business hours.");
-            }
+    public boolean validTimeSlot(LocalDateTime date){
+        if(date.getHour() < 17 && date.getHour() >= 8){
+            return true;
         }
-        else{
-            throw new IllegalArgumentException("Can't book past dates.");
+        else {
+            throw new IllegalArgumentException("Outside business hours.");
         }
     }
 
-    public boolean validDay(){
+    public boolean validDay(LocalDateTime date){
         if(date.getDayOfWeek().getValue() <= 5){
             return true;
         }
@@ -79,9 +75,10 @@ public class Appointment {
     }
 
     public void setDate(LocalDateTime date) {
-        this.date = date;
+        if (validTimeSlot(date) && validDay(date)) {
+            this.date = date;
+        }
     }
-
     public User getUser() {
         return user;
     }
