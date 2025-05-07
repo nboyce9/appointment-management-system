@@ -6,8 +6,10 @@ import com.appointment.appointment_system.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -57,6 +59,20 @@ public class UserService {
     public List<Appointment> getUserAppointments(int userId) {
         Optional<User> user = repo.findById(userId);
         return user.get().getAppointments();
+    }
+
+    public List<Appointment> getPastAppointments(int userId){
+        List<Appointment> appointmentList = getUserAppointments(userId);
+        return appointmentList.stream()
+                .filter(appointment -> appointment.getDate().isBefore(LocalDateTime.now()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Appointment> getUpcomingAppointments(int userId){
+        List<Appointment> appointmentList = getUserAppointments(userId);
+        return appointmentList.stream()
+                .filter(appointment -> appointment.getDate().isAfter(LocalDateTime.now()))
+                .collect(Collectors.toList());
     }
 
 }
