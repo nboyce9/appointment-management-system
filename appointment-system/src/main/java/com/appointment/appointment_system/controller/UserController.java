@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping("/{user_id}/book")
-    public void addAppointment(@PathVariable int userId, @RequestBody Appointment appointment){
-        svc.addAppointment(userId, appointment);
+    public void addAppointment(@PathVariable int user_id, @RequestBody Appointment appointment){
+        svc.addAppointment(user_id, appointment);
     }
 
     @DeleteMapping("/{user_id}/delete")
@@ -41,5 +41,15 @@ public class UserController {
     @RequestMapping("{user_id}/appointments")
     public List<Appointment> getUserAppointments(@PathVariable int user_id){
         return svc.getUserAppointments(user_id);
+    }
+
+    @RequestMapping("{user_id}/upcoming")
+    public List<Appointment> getUpcomingUserAppointments(@PathVariable int user_id){
+        return svc.getUpcomingAppointments(user_id);
+    }
+
+    @RequestMapping("{user_id}/past")
+    public List<Appointment> getPastUserAppointments(@PathVariable int user_id){
+        return svc.getPastAppointments(user_id);
     }
 }
