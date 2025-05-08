@@ -3,9 +3,12 @@ package com.appointment.appointment_system.controller;
 import com.appointment.appointment_system.model.Appointment;
 import com.appointment.appointment_system.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -16,5 +19,15 @@ public class AppointmentController {
     @RequestMapping("/appointments")
     public List<Appointment> getAppointments(){
         return svc.getAppointments();
+    }
+
+    @PostMapping("/getDayAppointments")
+    public List<Appointment> getAppointmentsByDate(@RequestBody LocalDate date){
+        return svc.getAppointmentsByDate(date);
+    }
+
+    @PostMapping("/getTodaysAppointments")
+    public List<Appointment> getTodaysAppointments(@RequestBody LocalDate date){
+        return svc.getAppointmentsByDate(LocalDate.now());
     }
 }
