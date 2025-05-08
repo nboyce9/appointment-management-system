@@ -19,11 +19,11 @@ public class LoadDataBase {
     @Bean
     CommandLineRunner loadData(UserRepository repo) {
         return args -> {
-//        User lilly =new User(5L, "Lilly", "Cartoon", "lillyc@email.com", "0712345678",
-//                UserRole.CLIENT, new ArrayList<>());
-//        User stitchy= new User(4L, "Stitchy", "Cartoon", "stitychc@email.com", "0798765432",
-//                UserRole.CLIENT, new ArrayList<>());
-        User papa = new User(3L, "Papa", "Cartoon", "papac@email.com", "0716581695",
+        User lilly =new User("Lilly", "Cartoon", "lillyc@email.com", "0712345678",
+                UserRole.CLIENT, new ArrayList<>());
+        User stitchy= new User("Stitchy", "Cartoon", "stitchyc@email.com", "0798765432",
+                UserRole.CLIENT, new ArrayList<>());
+        User papa = new User("Papa", "Cartoon", "papac@email.com", "0716581695",
                 UserRole.ADMIN,
                 new ArrayList<>());
 
@@ -31,8 +31,8 @@ public class LoadDataBase {
             app1.setDate(LocalDateTime.of(2025, 9, 30, 9, 45));
             app1.setLocation("Office");
             app1.setStatus(AppointmentStatus.WAITING);
-//            lilly.addAppointment(app1);
-            repo.saveAll(List.of(papa));
+            lilly.addAppointment(app1);
+            repo.saveAll(List.of(lilly, stitchy ,papa));
         };
     }
 }
