@@ -42,6 +42,12 @@ public class User {
         appointment.setUser(this);
     }
 
+    public void cancelAppointment(Appointment appointment){
+        appointment.setStatus(AppointmentStatus.CANCELLED);
+        appointments.add(appointment);
+        appointment.setUser(this);
+    }
+
     @Override
     public String toString() {
         return "User{" +

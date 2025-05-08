@@ -2,6 +2,7 @@ package com.appointment.appointment_system.controller;
 
 import com.appointment.appointment_system.model.Appointment;
 import com.appointment.appointment_system.model.User;
+import com.appointment.appointment_system.service.AppointmentService;
 import com.appointment.appointment_system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService svc;
+
+    @Autowired
+    AppointmentService apt;
 
     @RequestMapping("/")
     public List<User> getUsers(){
@@ -26,6 +30,11 @@ public class UserController {
     @PostMapping("/{user_id}/book")
     public void addAppointment(@PathVariable int user_id, @RequestBody Appointment appointment){
         svc.addAppointment(user_id, appointment);
+    }
+
+    @PostMapping("/{user_id}/cancel")
+    public void cancelAppointment(@PathVariable int user_id, @RequestBody Appointment appointment){
+        svc.cancelAppointment(user_id, appointment);
     }
 
     @DeleteMapping("/{user_id}/delete")
