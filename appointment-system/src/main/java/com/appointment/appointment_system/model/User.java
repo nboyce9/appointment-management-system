@@ -28,6 +28,15 @@ public class User {
 
     public User() {}
 
+    public User(String name, String surname, String emailAddress, String phoneNumber, UserRole role, List<Appointment> appointments) {
+        this.name = name;
+        this.surname = surname;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+        this.appointments = appointments;
+    }
+
     public void addAppointment(Appointment appointment){
         appointments.add(appointment);
         appointment.setUser(this);
