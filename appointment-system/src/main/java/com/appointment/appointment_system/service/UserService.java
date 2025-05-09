@@ -6,6 +6,7 @@ import com.appointment.appointment_system.model.User;
 import com.appointment.appointment_system.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -76,7 +77,8 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
-    public void cancelAppointment(int userId, Appointment appointment) {
+    @Transactional
+    public void cancelAppointment(int userId, int apptId) {
         Optional<User> userOptional = repo.findById(userId);
         if(userOptional.isEmpty()){
             throw new IllegalArgumentException("Unknown user");
@@ -84,7 +86,8 @@ public class UserService {
 //        appointment.setStatus(AppointmentStatus.CANCELLED
         Appointment appointment = userOptional.get().getAppointments().get(apptId);
         userOptional.get().cancelAppointment(appointment);
-        User user = userOptional.get();
-        repo.save(user);
+
+//        User user = userOptional.get();
+//        repo.save(user);
     }
 }
