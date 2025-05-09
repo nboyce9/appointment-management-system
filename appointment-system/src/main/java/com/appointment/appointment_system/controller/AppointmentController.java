@@ -23,8 +23,8 @@ public class AppointmentController {
         return svc.getAppointmentsByDate(date);
     }
 
-    @PostMapping("/getTodaysAppointments")
-    public List<Appointment> getTodaysAppointments(@RequestBody LocalDate date){
+    @GetMapping("/getTodaysAppointments")
+    public List<Appointment> getTodaysAppointments(){
         return svc.getAppointmentsByDate(LocalDate.now());
     }
 }
