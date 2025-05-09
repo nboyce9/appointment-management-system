@@ -54,6 +54,14 @@ public class Appointment {
         }
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getLocation() {
         return location;
     }
