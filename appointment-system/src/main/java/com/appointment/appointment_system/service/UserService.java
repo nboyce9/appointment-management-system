@@ -83,11 +83,7 @@ public class UserService {
         if(userOptional.isEmpty()){
             throw new IllegalArgumentException("Unknown user");
         }
-//        appointment.setStatus(AppointmentStatus.CANCELLED
         Appointment appointment = userOptional.get().getAppointments().get(apptId);
         userOptional.get().cancelAppointment(appointment);
-
-//        User user = userOptional.get();
-//        repo.save(user);
     }
 }
