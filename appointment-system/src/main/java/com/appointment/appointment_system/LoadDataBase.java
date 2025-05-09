@@ -32,6 +32,12 @@ public class LoadDataBase {
             app1.setLocation("Office");
             app1.setStatus(AppointmentStatus.WAITING);
             lilly.addAppointment(app1);
+
+            Appointment app2 = new Appointment();
+            app2.setDate(LocalDateTime.of(2025, 4, 30, 11, 0));
+            app2.setLocation("Virtual");
+            app2.setStatus(AppointmentStatus.WAITING);
+            lilly.addAppointment(app2);
             repo.saveAll(List.of(lilly, stitchy ,papa));
         };
     }
