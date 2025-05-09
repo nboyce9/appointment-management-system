@@ -32,9 +32,9 @@ public class UserController {
         svc.addAppointment(user_id, appointment);
     }
 
-    @PostMapping("/{user_id}/cancel")
-    public void cancelAppointment(@PathVariable int user_id, @RequestBody Appointment appointment){
-        svc.cancelAppointment(user_id, appointment);
+    @GetMapping("/{user_id}/{id}/cancel")
+    public void cancelAppointment(@PathVariable int user_id, @PathVariable int id){
+        svc.cancelAppointment(user_id, id);
     }
 
     @DeleteMapping("/{user_id}/delete")
